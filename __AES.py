@@ -7,8 +7,6 @@ from cryptography.hazmat.backends import default_backend as _default_backend
 from cryptography.hazmat.primitives import hashes as _hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC as _PBKDF2HMAC
 
-
-
 __key = Fernet.generate_key()
 
 def main():
