@@ -8,16 +8,18 @@ from cryptography.hazmat.primitives import hashes as _hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC as _PBKDF2HMAC
 
 class __AES_Algorithm:
-      __salt = b'salt_'
+
       __key = Fernet.generate_key()
-      __user_input = bytes(input("[Input]: "), "utf8")
 
       @staticmethod
       def main():
-            if __user_input.find("b'"):
+            __input = input("Encrypt or Decrypt? [e/d]: ")
+            if __input.find("e"):
+                  __encryption()
+            elif __input.find("d"):
                   __decryption()
             else:
-                  __encryption()
+                  print("Please Input A Valid Choice.")
 
       @staticmethod
       def __decryption():
@@ -25,6 +27,8 @@ class __AES_Algorithm:
 
       @staticmethod
       def __encryption():
+            __salt = b'salt_'
+            __user_input = bytes(input("[Input]: "), "utf8")
             _KDF = _PBKDF2HMAC(
                   algorithm = _hashes.SHA256(),
                   length = 32,
